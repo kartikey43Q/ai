@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Business Automation</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>AI Business Automation</h1> <!-- Your website's title or logo -->
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li> <!-- Navigation links -->
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main>
+        <!-- Features Section -->
+        <section id="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="feature">
+                    <h3>Automated Data Analysis</h3>
+                    <p>Harness the power of machine learning algorithms to effortlessly analyze vast amounts of data. From sales figures to customer behavior patterns, our AI tools provide valuable insights to drive informed decision-making and strategic planning.</p>
+                </div>
+                <div class="feature">
+                    <h3>Intelligent Customer Support</h3>
+                    <p> Enhance your customer service experience with AI-powered chatbots. These intelligent virtual assistants are available 24/7 to answer queries, provide assistance, and offer personalized recommendations, ensuring prompt and efficient support for your customers.</p>
+                </div>
+                <div class="feature">
+                    <h3>Efficient Resource Allocation</h3>
+                    <p> Optimize resource allocation and streamline workflows with AI-driven optimization tools. By analyzing factors such as workload, resource availability, and project deadlines, our platform helps you allocate resources more effectively, maximizing productivity and minimizing wastage.
+
+                        With our innovative features, AI Business Automation empowers businesses of all sizes to stay ahead of the curve and thrive in today's fast-paced digital landscape."
+                        
+                        
+                        
+                        
+                        
+                        
+                        </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>"At AI Business Automation, we are dedicated to revolutionizing the way businesses operate by leveraging cutting-edge artificial intelligence technologies. With a team of passionate experts, we aim to empower organizations to optimize their processes, enhance customer experiences, and drive innovation. Our mission is to provide tailored AI solutions that enable businesses to thrive in the ever-evolving digital landscape."</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have questions or need assistance? Reach out to us!</p>
+                <form action="submit_form.php" method="post"> <!-- Form for contacting -->
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AI Business Automation</p> <!-- Footer content -->
+        </div>
+    </footer>
+</body>
+</html>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js"></script>
+
+<df-messenger
+    chat-title=" buisness ai "
+    agent-id="rohan-opot"
+    language-code="en"
+></df-messenger>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<div id="chart-container"></div>
+
+<script>
+    // Sample data
+    const data = [
+        { name: 'A', value: 10 },
+        { name: 'B', value: 20 },
+        { name: 'C', value: 15 },
+        { name: 'D', value: 25 },
+        { name: 'E', value: 30 }
+    ];
+
+    // Define dimensions
+    const width = 500;
+    const height = 300;
+
+    // Create SVG element
+    const svg = d3.select('#chart-container')
+                  .append('svg')
+                  .attr('width', width)
+                  .attr('height', height);
+
+    // Create scales
+    const xScale = d3.scaleBand()
+                     .domain(data.map(d => d.name))
+                     .range([0, width])
+                     .padding(0.1);
+
+    const yScale = d3.scaleLinear()
+                     .domain([0, d3.max(data, d => d.value)])
+                     .range([height, 0]);
+
+    // Create bars
+    svg.selectAll('rect')
+       .data(data)
+       .enter()
+       .append('rect')
+       .attr('x', d => xScale(d.name))
+       .attr('y', d => yScale(d.value))
+       .attr('width', xScale.bandwidth())
+       .attr('height', d => height - yScale(d.value))
+       .attr('fill', 'steelblue');
+
+    // Add axes
+    svg.append('g')
+       .attr('transform', `translate(0, ${height})`)
+       .call(d3.axisBottom(xScale));
+
+    svg.append('g')
+       .call(d3.axisLeft(yScale));
+</script>
